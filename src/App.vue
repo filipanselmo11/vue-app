@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <input type="text" v-model="text.question" />
-    <span>Text: {{ text }}</span>
+    <span>Text: {{ text.question }}</span>
     <span>Api: {{ apiResponse }}</span>
   </div>
 </template>
