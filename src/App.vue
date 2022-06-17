@@ -1,21 +1,29 @@
 <template>
   <div id="app">
-    <button>Click</button>
+    <title-component v-if="shouldAppear"></title-component>
+    <button @click="shouldAppear = false">Click</button>
+    {{ count }}
   </div>
 </template>
 
 <script>
+import TitleComponent from "./components/TitleComponent.vue";
 export default {
   name: "App",
+  components: {
+    TitleComponent,
+  },
   data: () => ({
-    count: {
-      x: 0,
-    },
+    count: 0,
+    shouldAppear: true,
   }),
-  mounted() {
-    // this.y = 0;
-    // this.$set(this.count, "y", 1);
-    this.count = { ...this.count, ...{ a: 1, b: 2 } };
+  beforeUpdate() {
+    console.log("Before Update");
+    console.log(this.count);
+  },
+  updated() {
+    console.log("Updated");
+    console.log(this.count);
   },
 };
 </script>
