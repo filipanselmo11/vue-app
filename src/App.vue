@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <button>Click</button>
+    <button @click="fullNameComputed = 'Michael Morbius'">Click</button>
+    <!-- <span>{{ fullName() }}</span>
+    <span>{{ fullName() }}</span>
+    <span>{{ fullNameComputed }}</span> -->
+    <span>{{ fullNameComputed }}</span>
+    <!-- {{ count }} -->
   </div>
 </template>
 
@@ -8,14 +13,23 @@
 export default {
   name: "App",
   data: () => ({
-    count: {
-      x: 0,
-    },
+    count: 0,
+    firstName: "Fílip",
+    lastName: "Anselmo",
   }),
-  mounted() {
-    // this.y = 0;
-    // this.$set(this.count, "y", 1);
-    this.count = { ...this.count, ...{ a: 1, b: 2 } };
+  computed: {
+    fullNameComputed: {
+      get() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set(value) {
+        const [first, last ] = value.split(' ');
+        this.firstName = first;
+        this.lastName = last;
+
+      },
+      // return Math.random();
+    },
   },
 };
 </script>
